@@ -54,7 +54,7 @@ function wrapChild(child: HTMLElement) {
 function wrapChildren(element: HTMLElement) {
   const draggables: ElementX[] = [];
   Array.prototype.forEach.call(element.children, (child: ElementX) => {
-    if (child.nodeType === Node.ELEMENT_NODE) {
+    if (child.nodeType === 1) { // Node.ELEMENT_NODE) {
       let wrapper = child;
       if (!hasClass(child, wrapperClass)) {
         wrapper = wrapChild(child);
@@ -71,7 +71,7 @@ function wrapChildren(element: HTMLElement) {
 function unwrapChildren(element: HTMLElement) {
   if (smoothDnD.wrapChild) {
     Array.prototype.forEach.call(element.children, (child: HTMLElement) => {
-      if (child.nodeType === Node.ELEMENT_NODE) {
+      if (child.nodeType === 1) { // Node.ELEMENT_NODE) {
         if (hasClass(child, wrapperClass)) {
           element.insertBefore(child.firstElementChild as HTMLElement, child);
           element.removeChild(child);
